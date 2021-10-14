@@ -36,6 +36,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libpcap-dev \
         libssh2-1-dev \
         locales \
+        ros-$ROS_DISTRO-novatel-gps-msgs \
         pulseaudio \
         python-flask \
         python-requests \
@@ -59,7 +60,7 @@ RUN update-locale LANG=en_US.UTF-8 LC_MESSAGES=POSIX
 
 # Add user
 ENV USERNAME autoware
-ARG USER_ID=1000
+ARG USER_ID=1000 # 1000
 ARG GROUP_ID=15214
 ENV PULSE_SERVER /run/pulse/native
 
@@ -96,5 +97,6 @@ RUN gconftool-2 --set "/apps/gnome-terminal/profiles/Default/use_theme_backgroun
     gconftool-2 --set "/apps/gnome-terminal/profiles/Default/background_color" --type string "#000000"
 
 
-COPY ./entrypoint.sh /tmp
-ENTRYPOINT ["/tmp/entrypoint.sh"]
+COPY ./entrypointBase.sh /tmp
+USER root
+ENTRYPOINT ["/tmp/entrypointBase.sh"]

@@ -107,6 +107,7 @@ cp ../dependencies .
 
 docker build \
     --rm \
+    --network=host \
     --tag $BASE \
     --build-arg ROS_DISTRO=$ROS_DISTRO \
     --file Dockerfile.base .
@@ -147,6 +148,7 @@ fi
 
 docker build \
     --rm \
+    --network=host \
     --tag $IMAGE_NAME:$TAG_PREFIX-$ROS_DISTRO$CUDA_SUFFIX \
     --build-arg FROM_ARG=$BASE$CUDA_SUFFIX \
     --build-arg ROS_DISTRO=$ROS_DISTRO \

@@ -79,6 +79,8 @@ ros-$ROS_DISTRO-jsk-topic-tools
 ros-$ROS_DISTRO-lgsvl-msgs
 ros-$ROS_DISTRO-nmea-msgs
 ros-$ROS_DISTRO-nmea-navsat-driver
+ros-$ROS_DISTRO-novatel-gps-msgs
+ros-$ROS_DISTRO-novatel-oem7-msgs
 ros-$ROS_DISTRO-mrt-cmake-modules
 ros-$ROS_DISTRO-pacmod-msgs
 ros-$ROS_DISTRO-pcl-conversions

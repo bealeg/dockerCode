@@ -83,7 +83,7 @@ while true; do
       shift 2
       ;;
     -s|--skip-uid-fix)
-      USER_ID=1000
+      USER_ID=1000 # 1000
       shift 1
       ;;
     -t|--tag-prefix)
@@ -127,9 +127,10 @@ SHARED_HOST_DIR=$HOME/shared_dir
 
 AUTOWARE_DOCKER_DIR=/home/autoware/Autoware
 
-VOLUMES="--volume=$XSOCK:$XSOCK:rw
+VOLUMES="--volume=$XSOCK:$XSOCK:rw 
          --volume=$XAUTH:$XAUTH:rw
-         --volume=$SHARED_HOST_DIR:$SHARED_DOCKER_DIR:rw"
+         --volume=$SHARED_HOST_DIR:$SHARED_DOCKER_DIR:rw
+         --volume=/vtti/projects05:/home/autoware/data"
 
 if [ "$BASE_ONLY" == "true" ]; then
     SUFFIX=$SUFFIX"-base"
@@ -157,7 +158,9 @@ docker run \
     --env="XAUTHORITY=${XAUTH}" \
     --env="DISPLAY=${DISPLAY}" \
     --env="USER_ID=$USER_ID" \
-    --privileged \
     --net=host \
+    --privileged \
+    --user=12343 \
     $RUNTIME \
-    $IMAGE
+    $IMAGE \
+    
