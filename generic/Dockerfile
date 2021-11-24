@@ -10,9 +10,11 @@ ENV USERNAME autoware
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Build Autoware
+# wget https://gitlab.com/autowarefoundation/autoware.ai/autoware/raw/$VERSION/autoware.ai.repos; \
+
 RUN bash -c 'mkdir -p /home/$USERNAME/Autoware/src; \
     cd /home/$USERNAME/Autoware; \
-    wget https://gitlab.com/autowarefoundation/autoware.ai/autoware/raw/$VERSION/autoware.ai.repos; \
+    wget https://raw.githubusercontent.com/bealeg/autoware.ai/master/autoware.ai.repos; \
     vcs import src < autoware.ai.repos; \
     cd src; \
     git clone https://github.com/bealeg/processingCode.git; \
