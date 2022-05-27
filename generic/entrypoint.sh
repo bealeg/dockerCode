@@ -19,7 +19,7 @@ if [ -v USER_ID ] && [ "$USER_ID" != "$DEFAULT_USER_ID" ]; then
 fi
 export HOME="/home/autoware/"
 
-cd /home/autoware/
+cd /home/autoware/Autoware
 source install/setup.bash
 #cd shared_dir/
 

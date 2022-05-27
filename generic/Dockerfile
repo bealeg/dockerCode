@@ -12,17 +12,20 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Build Autoware
 # wget https://gitlab.com/autowarefoundation/autoware.ai/autoware/raw/$VERSION/autoware.ai.repos; \
 
+# colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release; \
+# chmod 777 /home/autoware -R; \
+
 RUN bash -c 'mkdir -p /home/$USERNAME/Autoware/src; \
     cd /home/$USERNAME/Autoware; \
     wget https://raw.githubusercontent.com/bealeg/autoware.ai/master/autoware.ai.repos; \
     vcs import src < autoware.ai.repos; \
     cd src; \
     git clone https://github.com/bealeg/processingCode.git; \
-    cd ../..; \
+    cd ..; \
     source /opt/ros/$ROS_DISTRO/setup.bash; \
-    colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release'; \
+    colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release; \
     chmod 777 /home/autoware -R; \
-    source /opt/ros/$ROS_DISTRO/setup.bash;
+    source /opt/ros/$ROS_DISTRO/setup.bash'
 
 # RUN echo "source /home/$USERNAME/install/local_setup.bash" >>
 

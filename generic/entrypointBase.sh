@@ -18,10 +18,10 @@ if [ -v USER_ID ] && [ "$USER_ID" != "$DEFAULT_USER_ID" ]; then
     find /home/autoware -user $DEFAULT_USER_ID -exec chown -h $USER_ID {} \;
 fi
 
-cd $HOME/autoware.ai/
-source install/setup.bash
-cd src/processingCode/
-roslaunch dockerNoRecordEuclid.launch
+#cd $HOME/autoware.ai/
+#source install/setup.bash
+#cd src/processingCode/
+#roslaunch dockerNoRecordEuclid.launch
 
 # If no command is provided, set bash to start interactive shell
 if [ -z "$1" ]; then
